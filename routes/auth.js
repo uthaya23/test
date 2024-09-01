@@ -18,6 +18,7 @@ router.post('/login', async (req, res) => {
             return res.json({ message: "Wrong password" });
         }
         const token = jwt.sign({ username: admin.username, role: 'admin' }, process.env.Admin_Key);
+        console.log('Admin_Key:', process.env.Admin_Key);
         res.json({ login: true, role: 'admin', token });
     } else {
         // Handle other roles
