@@ -16,6 +16,12 @@ const corsOptions ={
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
+app.use(cors({
+    origin: 'http://localhost:3000', // Update this to your frontend URL if needed
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 dotenv.config()
 app.use('/auth',AdminRouter)
 app.use('/student', StudentRouter)
